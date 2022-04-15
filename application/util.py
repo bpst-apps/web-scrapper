@@ -239,7 +239,7 @@ def scrape_coursera_pages(page_url):
             'course-syllabus': course_syllabus, 'course-reviews': course_user_reviews}
 
 
-def insert_scrapped_data_for_course(scraped_data, db_name='scrapped-data.db', db_type='sqlite'):
+def insert_course(scraped_data, db_name='app.db', db_type='sqlite'):
     if db_type == 'sqlite':
         connection = sqlite3.connect(db_name)
 
@@ -261,13 +261,13 @@ def insert_scrapped_data_for_course(scraped_data, db_name='scrapped-data.db', db
         connection.close()
 
 
-def insert_scrapped_data_for_courses_details(scraped_data, db_name='scrapped-data.db', db_type='sqlite'):
+def insert_courses_details_dump(scraped_data, db_name='app.db', db_type='sqlite'):
     if db_type == 'sqlite':
         connection = sqlite3.connect(db_name)
 
         # create curser
         cursor = connection.cursor()
-        create_table_query = """ CREATE TABLE IF NOT EXISTS SCRAPPED_DATA_COURSES (
+        create_table_query = """ CREATE TABLE IF NOT EXISTS SCRAPPED_DATA_COURSES_DUMP (
                                     RECORD_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                                     COURSES_DETAILS TEXT NOT NULL,
                                     TECH_NEURON_COURSE_COUNT TEXT NOT NULL,
@@ -278,19 +278,19 @@ def insert_scrapped_data_for_courses_details(scraped_data, db_name='scrapped-dat
         cursor.execute(create_table_query)
 
         # insert record
-        cursor.execute('INSERT INTO SCRAPPED_DATA_COURSES (COURSES_DETAILS, TECH_NEURON_COURSE_COUNT, \
+        cursor.execute('INSERT INTO SCRAPPED_DATA_COURSES_DUMP (COURSES_DETAILS, TECH_NEURON_COURSE_COUNT, \
                             KIDS_NEURON_COURSE_COUNT, TIMESTAMP) VALUES(?, ?, ?, ?)', scraped_data)
         connection.commit()
         connection.close()
 
 
-def insert_scrapped_data_for_course_categories(scraped_data, db_name='scrapped-data.db', db_type='sqlite'):
+def insert_course_categories_dump(scraped_data, db_name='app.db', db_type='sqlite'):
     if db_type == 'sqlite':
         connection = sqlite3.connect(db_name)
 
         # create curser
         cursor = connection.cursor()
-        create_table_query = """ CREATE TABLE IF NOT EXISTS SCRAPPED_DATA_COURSE_CATEGORIES (
+        create_table_query = """ CREATE TABLE IF NOT EXISTS SCRAPPED_DATA_COURSE_CATEGORIES_DUMP (
                                     RECORD_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                                     COURSE_CATEGORIES TEXT NOT NULL,
                                     TIMESTAMP TEXT NOT NULL
@@ -299,13 +299,13 @@ def insert_scrapped_data_for_course_categories(scraped_data, db_name='scrapped-d
         cursor.execute(create_table_query)
 
         # insert record
-        cursor.execute('INSERT INTO SCRAPPED_DATA_COURSE_CATEGORIES (COURSE_CATEGORIES, TIMESTAMP) \
+        cursor.execute('INSERT INTO SCRAPPED_DATA_COURSE_CATEGORIES_DUMP (COURSE_CATEGORIES, TIMESTAMP) \
                             VALUES(?, ?)', scraped_data)
         connection.commit()
         connection.close()
 
 
-def log_user_activity(activity_data, db_name='scrapped-data.db', db_type='sqlite'):
+def log_user_activity(activity_data, db_name='app.db', db_type='sqlite'):
     if db_type == 'sqlite':
         # make connection with database
         connection = sqlite3.connect(db_name)

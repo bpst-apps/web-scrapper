@@ -20,6 +20,28 @@
                     <a href="/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i>
                     </span><span class="pcoded-mtext">Dashboard</span></a>
                 </li>
+                <li class="nav-item pcoded-menu-caption">
+                    <label>Similar Content</label>
+                </li>
+                <li data-username="Disabled Menu" class="nav-item">
+                    <a href="{{ url_for('coursera') }}" class="nav-link">
+                        <span class="pcoded-micon"><i class="feather icon-box"></i>
+                        </span><span class="pcoded-mtext">Coursera</span>
+                    </a>
+                    <a href="{{ url_for('jobs') }}" class="nav-link">
+                        <span class="pcoded-micon"><i class="feather icon-file-text"></i>
+                        </span><span class="pcoded-mtext">Similar Jobs</span>
+                    </a>
+                </li>
+                <li class="nav-item pcoded-menu-caption">
+                    <label>Offers</label>
+                </li>
+                <li data-username="Disabled Menu" class="nav-item">
+                    <a href="{{ url_for('offers') }}" class="nav-link">
+                        <span class="pcoded-micon"><i class="feather icon-tag"></i>
+                        </span><span class="pcoded-mtext">Current Offers</span>
+                    </a>
+                </li>
 <!--                <li data-username="Disabled Menu" class="nav-item">-->
 <!--                    <a href="{{ url_for('logout')}}" class="nav-link">-->
 <!--                        <span class="pcoded-micon"><i class="feather icon-power"></i>-->
