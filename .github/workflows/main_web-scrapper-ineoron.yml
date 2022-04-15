@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'web-scrapper-ineoron'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BBFF8B9D713A421184C36B5FD27E1589 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C652F6995B8E46FD9F70BBE2066ECC37 }}
